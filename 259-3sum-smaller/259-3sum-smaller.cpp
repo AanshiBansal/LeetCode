@@ -5,18 +5,15 @@ public:
         int ans=0;
         int n=nums.size();
         for(int i=0;i<=n-3;i++){
-            for(int j=i+1;j<=n-2;j++){
-                int low=j+1;
-                int high=n-1;
-                while(low<=high){
-                    int mid=(low+high)/2;
-                    if(nums[i]+nums[j]+nums[mid]<target){
-                        low=mid+1;
-                    }else{
-                        high=mid-1;
-                    }
+            int j=i+1;
+            int k=n-1;
+            while(j<k){
+                if(nums[i]+nums[j]+nums[k]>=target){
+                    k--;
+                }else{
+                    ans+=(k-j);
+                    j++;
                 }
-                ans+=(low-j-1);
             }
         }
         return ans;
