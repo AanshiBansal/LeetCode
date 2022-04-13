@@ -6,14 +6,13 @@ public:
         int right=n-1;
         int i=0;
         while(i<=right){
-            if(nums[i]==2){
+            if(nums[i]==2)
                 swap(nums[i],nums[right--]);
-                continue;
+            else{
+                if(nums[i]==0)
+                    swap(nums[i],nums[left++]);
+                i++;
             }
-            if(nums[i]==0){
-                swap(nums[i],nums[left++]);
-            }
-            i++;
         }
     }
 };
