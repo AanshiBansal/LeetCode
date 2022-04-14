@@ -37,7 +37,6 @@ public:
         ans+=fn("Million ",millions);
         ans+=fn("Thousand ",thousands);
         ans+=fn("",ones);
-        //return ans;
         return ans.substr(0,ans.size()-1);
     }
 };
