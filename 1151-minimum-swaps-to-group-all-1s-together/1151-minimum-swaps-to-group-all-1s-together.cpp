@@ -6,15 +6,14 @@ public:
         int count=0;
         for(int d:data)
             count+=d;
-        int end=0;
+        
         int curr=0;
-        while(end<n){
-            curr+=data[end];
-            if(end>=count){
-                curr-=data[end-count];
+        for(int i=0;i<n;i++){
+            curr+=data[i];
+            if(i>=count){
+                curr-=data[i-count];
             }
             maxones=max(maxones,curr);
-            end++;
         }
         return count-maxones;
     }
