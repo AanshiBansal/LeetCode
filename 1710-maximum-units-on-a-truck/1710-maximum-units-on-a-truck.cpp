@@ -14,6 +14,8 @@ public:
     //     }
     //     return ans;
     // }
+    // Counting Sort
+    // Time: O(n), Space: O(1)
     int maximumUnits(vector<vector<int>>& boxTypes, int truckSize) {
         int ans=0;
         vector<int>count(1001,0);
