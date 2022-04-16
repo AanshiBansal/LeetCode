@@ -14,11 +14,10 @@ private:
     int fn(TreeNode* root, int top){
         if(root==NULL)
             return 0;
-        int ans=root->val;
         int right=fn(root->right,top);
-        root->val+=right+top;
-        int left=fn(root->left,root->val);
-        return ans+right+left;
+        int left=fn(root->left,root->val+top+right);
+        root->val+=top+right;
+        return root->val+left-top;
     }
 public:
     TreeNode* convertBST(TreeNode* root) {
