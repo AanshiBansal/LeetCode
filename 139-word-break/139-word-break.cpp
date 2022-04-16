@@ -18,10 +18,7 @@ private:
     }
 public:
     bool wordBreak(string s, vector<string>& wordDict) {
-        unordered_set<string>dict;
-        for(string s:wordDict){
-            dict.insert(s);
-        }
+        unordered_set<string>dict(wordDict.begin(),wordDict.end());
         int n=s.size();
         vector<int>mp(n,2);
         return rec(s,0,n,dict,mp);
