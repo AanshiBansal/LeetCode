@@ -27,15 +27,11 @@ public:
                 if(prev!=NULL && prev->val>s.top()->val && first!=NULL){
                     second=s.top();
                 }
-                    prev=s.top();
-                    s.pop();
-                    root=prev->right;
+                prev=s.top();
+                s.pop();
+                root=prev->right;
             }
         }
-        int temp=first->val;
-        cout<<temp<<endl;
-        first->val=second->val;
-        second->val=temp;
-        //swap(first,second);
+        swap(first->val,second->val);
     }
 };
