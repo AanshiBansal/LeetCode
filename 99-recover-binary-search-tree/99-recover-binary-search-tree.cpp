@@ -11,25 +11,31 @@
  */
 class Solution {
 public:
-	TreeNode* firstMistake, *secondMistake, *pre;
-	void recoverTree(TreeNode* root) {
-		pre = new TreeNode(INT_MIN);
-		inorder(root);
-		swap(firstMistake->val, secondMistake->val);
-	}
-
-	void inorder(TreeNode* root) {
-		if(root == nullptr) 
-			return;
-
-		inorder(root->left);
-
-		if(firstMistake == nullptr && root->val < pre->val)
-			firstMistake = pre;
-		if(firstMistake != nullptr && root->val < pre->val)
-			secondMistake = root;
-		pre = root;
-
-		inorder(root->right);
-	}
+    void recoverTree(TreeNode* root) {
+        TreeNode* first=NULL;
+        TreeNode* second=NULL;
+        TreeNode* prev=NULL;
+        stack<TreeNode*>s;
+        while(!s.empty() || root!=NULL){
+            if(root!=NULL){
+                s.push(root);
+                root=root->left;
+            }else{
+                if(prev!=NULL && prev->val>s.top()->val && first==NULL){
+                    first=prev;
+                }
+                if(prev!=NULL && prev->val>s.top()->val && first!=NULL){
+                    second=s.top();
+                }
+                    prev=s.top();
+                    s.pop();
+                    root=prev->right;
+            }
+        }
+        int temp=first->val;
+        cout<<temp<<endl;
+        first->val=second->val;
+        second->val=temp;
+        //swap(first,second);
+    }
 };
