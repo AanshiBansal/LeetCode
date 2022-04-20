@@ -32,35 +32,38 @@
 //         return ans;
 //     }
 // };
+
 typedef pair<int,int> pr;
 class Solution {
 public:
     int maximumScore(vector<int>& scores, vector<vector<int>>& edges) {
-        vector<priority_queue<pr,vector<pr>,greater<pr>>>adj(scores.size());
+        int n = scores.size();
+        vector<priority_queue<pr,vector<pr>,greater<pr>>>adj(n);
         int ans=-1;
         for(auto edge:edges){
-            adj[edge[0]].push({scores[edge[1]], edge[1]});
-            if(adj[edge[0]].size()>3)
-                adj[edge[0]].pop();
-            adj[edge[1]].push({scores[edge[0]], edge[0]});
-            if(adj[edge[1]].size()>3)
-                adj[edge[1]].pop();
+            int n1=edge[0];
+            int n2=edge[1];
+            adj[n1].push({scores[n2], n2});
+            if(adj[n1].size()>3)
+                adj[n1].pop();
+            adj[n2].push({scores[n1], n1});
+            if(adj[n2].size()>3)
+                adj[n2].pop();
         }
-        int n = scores.size();
-        vector<vector<int>>adj2(n);
+        vector<vector<int>>neighbors(n);
         for(int i=0;i<n;i++){
             while(!adj[i].empty()){
-                adj2[i].push_back(adj[i].top().second);
+                neighbors[i].push_back(adj[i].top().second);
                 adj[i].pop();
             }
         }
         for(auto edge:edges){
             int n1=edge[0];
             int n2=edge[1];
-            for(auto nodes1: adj2[n1]){
-                for(auto nodes2: adj2[n2]){
-                    if(nodes1 != n2 && nodes1!=nodes2 && nodes2!= n1){
-                        ans=max(ans,scores[n1]+scores[n2]+scores[nodes1]+scores[nodes2]);
+            for(int neighbor1: neighbors[n1]){
+                for(int neighbor2: neighbors[n2]){
+                    if(neighbor1 != n2 && neighbor1!=neighbor2 && neighbor2!= n1){
+                        ans=max(ans,scores[n1]+scores[n2]+scores[neighbor1]+scores[neighbor2]);
                     }
                 }
             }
