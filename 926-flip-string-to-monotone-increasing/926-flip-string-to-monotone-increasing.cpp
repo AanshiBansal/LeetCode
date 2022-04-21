@@ -38,12 +38,6 @@ public:
             if(s[i]=='1'){
                 ones++;
             }else{
-                // if(ones<=ans+1){
-                //     ans=ones;
-                // }else{
-                //     ans++;
-                //     ones++;
-                // }
                 ans=min(ans+1,ones);
             }
         }
