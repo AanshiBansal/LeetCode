@@ -12,6 +12,8 @@
 class Solution {
 private:
     void inorder(TreeNode* root, vector<long long>&path, int &ans, int &targetSum){
+    if(root==NULL)
+        return;
     path.push_back(0);
     int size=path.size();
     int curr=root->val;
@@ -21,10 +23,8 @@ private:
             ans++;
         }
     }
-    if(root->left !=NULL)
-        inorder(root->left, path, ans, targetSum);
-    if(root->right !=NULL)
-        inorder(root->right,path, ans, targetSum);
+    inorder(root->left, path, ans, targetSum);
+    inorder(root->right,path, ans, targetSum);
     for(int i=0;i<size;i++){
         path[i]-=curr;
     }
@@ -34,8 +34,6 @@ public:
     int pathSum(TreeNode* root, int targetSum) {
         int ans=0;
         vector<long long>path;
-        if(root==NULL)
-            return ans;
         inorder(root,path,ans,targetSum);
         return ans;
     }
