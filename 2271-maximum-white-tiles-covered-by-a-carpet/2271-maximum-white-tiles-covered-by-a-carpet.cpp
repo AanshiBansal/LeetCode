@@ -14,19 +14,16 @@ public:
             l+=(tiles[i][1]-prevEnding);
             prevEnding=tiles[i][1];
             while(l>carpetLen){
-                //cout<<"here"<<i<<endl;
                 l--;
                 if(carpetStart<=tiles[prev][1]);
                 else
                     prev++;
                 if(carpetStart>=tiles[prev][0]){
-                    //cout<<"here"<<i<<" "<<carpetStart<<" "<<prev<<endl;
                     curr--;
                 }
                 carpetStart++;
             }
             ans=max(ans,curr);
-            //cout<<i<<" "<<curr<<" "<<ans<<endl;
         }
         return ans;
     }
