@@ -1,3 +1,4 @@
+// Binary Search Tree Solution
 class CountIntervals {
     private:
     set<pair<int,int>>s;
@@ -12,11 +13,6 @@ public:
     
     void add(int left, int right) {
         auto curr=s.lower_bound({left,right});
-        // if(curr==s.end()){
-        //     s.insert({left,right});
-        //     c+=(right-left+1);
-        //     return;
-        // }
         auto prev=curr;
         prev--;
         int l=max(left,prev->second+1);
@@ -42,6 +38,7 @@ public:
     }
 };
 
+// Linked List Solution
 // struct customListNode{
 //     customListNode* next;
 //     int start;
@@ -94,7 +91,6 @@ public:
 //         return counter;
 //     }
 // };
-
 
 
 /**
