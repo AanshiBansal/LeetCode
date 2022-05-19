@@ -10,18 +10,14 @@ public:
             for(int j=0;j<n;j++){
                 if(s[j]==c){
                     if(curr!=-1){
-                        int a=(curr-prev);
-                        int b=(j-curr);
-                        ans+=(a*b);
+                        ans+=((curr-prev)*(j-curr));
                     }
                     prev=curr;
                     curr=j;
                 }
             }
             if(curr!=-1){
-                int a=(curr-prev);
-                int b=(n-curr);
-                ans+=(a*b);
+                ans+=((curr-prev)*(n-curr));
             }
         }
         return ans;
