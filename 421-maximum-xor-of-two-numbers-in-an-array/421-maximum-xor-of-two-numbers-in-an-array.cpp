@@ -47,11 +47,11 @@ class Solution {
 public:
     int findMaximumXOR(vector<int>& nums) {
         Trie trie;
-        for(auto num:nums){
+        for(int num:nums){
             trie.insert(num);
         }
         int maxi=0;
-        for(auto num:nums){
+        for(int num:nums){
             maxi=max(maxi,trie.findMax(num));
         }
         return maxi;
