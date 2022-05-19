@@ -1,7 +1,6 @@
 class Solution {
 private:
     int dp(vector<vector<int>>&mp,vector<vector<int>>& matrix,int i, int j, int m, int n){
-        //cout<<i<<" "<<j<<endl;
         if(mp[i][j]!=-1)
             return mp[i][j];
         int dx[]={0,0,-1,1};
@@ -15,7 +14,6 @@ private:
             }
         }
         mp[i][j]=next+1;
-        //cout<<"here"<<i<<" "<<j<<" "<<mp[i][j]<<endl;
         return mp[i][j];
     }
 public:
