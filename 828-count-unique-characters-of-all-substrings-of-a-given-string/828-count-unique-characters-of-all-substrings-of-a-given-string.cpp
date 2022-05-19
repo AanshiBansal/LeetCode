@@ -7,17 +7,14 @@ public:
             char c='A'+i;
             int curr=-1;
             int prev=-1;
-            for(int j=0;j<n;j++){
-                if(s[j]==c){
+            for(int j=0;j<=n;j++){
+                if(j==n || s[j]==c){
                     if(curr!=-1){
                         ans+=((curr-prev)*(j-curr));
                     }
                     prev=curr;
                     curr=j;
                 }
-            }
-            if(curr!=-1){
-                ans+=((curr-prev)*(n-curr));
             }
         }
         return ans;
