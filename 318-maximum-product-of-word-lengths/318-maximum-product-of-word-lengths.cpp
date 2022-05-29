@@ -42,7 +42,7 @@ public:
         unsigned long ans=0;
         for(int i=0;i<n;i++){
             for(int j=0;j<n;j++){
-                if(!((bitValue[i]&bitValue[j])>0)){
+                if((bitValue[i]&bitValue[j])==0){
                     ans=max(ans,words[i].size()*words[j].size());
                 }
             }
