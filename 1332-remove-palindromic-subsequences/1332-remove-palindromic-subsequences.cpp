@@ -13,16 +13,6 @@ private:
     }
 public:
     int removePalindromeSub(string s) {
-        int count=0;
-        if(isPalindrome(s))
-            return 1;
-        // for(char c:s){
-        //     if(c=='a')
-        //         count++;
-        //     else
-        //         count--;
-        // }
-        // return count==0?1:2;
-        return 2;
+        return isPalindrome(s)?1:2;
     }
 };
