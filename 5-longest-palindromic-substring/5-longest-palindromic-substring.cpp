@@ -30,6 +30,7 @@ public:
 */
 
 // DB-Tabulation
+/*
 class Solution {
 public:
     string longestPalindrome(string s) {
@@ -56,4 +57,33 @@ public:
         return ans;
     }
 };
+*/
 
+class Solution {
+public:
+    string longestPalindrome(string s) {
+        string ans="";
+        int n=s.size();
+        for(int index=0;index<n;index++){
+            int i=index;
+            int j=index;
+            while(i>=0 && j<n && s[i]==s[j]){
+                i--;
+                j++;
+            }
+            if(j-i-1>ans.size())
+                ans=s.substr(i+1,j-i-1);
+        }
+        for(int index=1;index<n;index++){
+            int i=index-1;
+            int j=index;
+            while(i>=0 && j<n && s[i]==s[j]){
+                i--;
+                j++;
+            }
+            if(j-i-1>ans.size())
+                ans=s.substr(i+1,j-i-1);
+        }
+        return ans;
+    }
+};
