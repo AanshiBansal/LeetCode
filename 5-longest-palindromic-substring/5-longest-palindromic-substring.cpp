@@ -14,8 +14,8 @@ public:
         string ans="";
         int n=s.size();
         vector<vector<int>>dp(n,vector<int>(n,-1));
-        for(int i=0;i<s.size();i++){
-            for(int j=i;j<s.size();j++){
+        for(int i=0;i<n;i++){
+            for(int j=i;j<n;j++){
                 if(isPalindrome(s,i,j,dp)==1){
                     if(j-i+1>ans.size())
                         ans=s.substr(i,j-i+1);
