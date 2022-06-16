@@ -1,32 +1,36 @@
-/*
 class Solution {
 private:
-    void binarySearch(vector<int>&ans,int low, int high, int num){
-        if(low>high){
-            if(low<ans.size())
-                ans[low]=num;
-            else
-                ans.push_back(num);
-            return;
-        }
-        int mid=(low+high)/2;
-        if(ans[mid]<num){
-            binarySearch(ans,mid+1,high,num);
-        }else{
-            binarySearch(ans,low,mid-1,num);
-        }
-    }
+    // void binarySearch(vector<int>&ans,int low, int high, int num){
+    //     if(low>high){
+    //         if(low<ans.size())
+    //             ans[low]=num;
+    //         else
+    //             ans.push_back(num);
+    //         return;
+    //     }
+    //     int mid=(low+high)/2;
+    //     if(ans[mid]<num){
+    //         binarySearch(ans,mid+1,high,num);
+    //     }else{
+    //         binarySearch(ans,low,mid-1,num);
+    //     }
+    // }
 public:
     int lengthOfLIS(vector<int>& nums) {
         int n=nums.size();
         vector<int>ans;
+        //ans.push_back(nums[0]);
         for(int i=0;i<n;i++){
-            binarySearch(ans,0,ans.size()-1,nums[i]);
+            auto index=lower_bound(ans.begin(),ans.end(),nums[i]);
+            if(index==ans.end())
+                ans.push_back(nums[i]);
+            else
+                *index=nums[i];
+            //binarySearch(ans,0,ans.size()-1,nums[i]);
         }
         return ans.size();
     }
 };
-*/
 
 // DP - Memorization
 /*
@@ -52,7 +56,7 @@ public:
 */
 
 // f(index,prev)=max(f(index+1,prev),f(index+1,index)+1);
-class Solution {
+/*class Solution {
 public:
     int lengthOfLIS(vector<int>& nums) {
         int n=nums.size();
@@ -75,3 +79,4 @@ public:
         return dp[0][0];
     }
 };
+*/
