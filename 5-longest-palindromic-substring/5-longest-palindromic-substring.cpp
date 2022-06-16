@@ -26,10 +26,11 @@
 //     }
 // };
 
+// DB-Tabulation
 class Solution {
 public:
     string longestPalindrome(string s) {
-        string ans="";
+        string ans=s.substr(0,1);
         int n=s.size();
         vector<vector<bool>>dp(n,vector<bool>(n));
         for(int i=0;i<n;i++){
@@ -43,16 +44,20 @@ public:
                 }else{
                     dp[i][j]=false;
                 }
-            }
-        }
-        for(int i=0;i<n;i++){
-            for(int j=i;j<n;j++){
                 if(dp[i][j]){
                     if(j-i+1>ans.size())
                         ans=s.substr(i,j-i+1);
                 }
             }
         }
+        // for(int i=0;i<n;i++){
+        //     for(int j=i;j<n;j++){
+        //         if(dp[i][j]){
+        //             if(j-i+1>ans.size())
+        //                 ans=s.substr(i,j-i+1);
+        //         }
+        //     }
+        // }
         return ans;
     }
 };
