@@ -6,8 +6,8 @@ public:
         while(low<high){
             int mid=(low+high)/2;
             //cout<<low<<" "<<high<<" "<<mid<<endl;
-            if(mid==nums.size()-1)
-                return mid;
+            // if(mid==nums.size()-1)
+            //     return mid;
             if(nums[mid]<nums[mid+1]){
                 low=mid+1;
             }else{
