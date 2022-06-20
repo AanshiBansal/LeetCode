@@ -7,21 +7,22 @@ public:
             adj[prerequisites[i][1]].push_back(prerequisites[i][0]);
             inbound[prerequisites[i][0]]++;
         }
-        queue<int>q;
+        //queue<int>q;
         vector<int>ans;
         for(int i=0;i<numCourses;i++){
             if(inbound[i]==0){
-                q.push(i);
+                //q.push(i);
                 ans.push_back(i);
             }
         }
-        while(!q.empty() && ans.size()<numCourses){
-            int curr=q.front();
-            q.pop();
+        int i=0;
+        while(i<ans.size() && ans.size()<numCourses){
+            int curr=ans[i];
+            i++;
             for(int neighbor:adj[curr]){
                 inbound[neighbor]--;
                 if(inbound[neighbor]==0){
-                    q.push(neighbor);
+                    //q.push(neighbor);
                     ans.push_back(neighbor);
                 }
             }
