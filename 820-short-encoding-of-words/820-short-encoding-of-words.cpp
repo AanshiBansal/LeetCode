@@ -18,7 +18,7 @@ class Trie{
         bool insert(string s){
             TrieNode* curr=root;
             bool ans=false;
-            for(int i=0;i<s.size();i++){
+            for(int i=s.size()-1;i>=0;i--){
                 if(curr->child[s[i]-'a']==NULL){
                     ans=true;
                     curr->child[s[i]-'a']=new TrieNode();
@@ -38,7 +38,7 @@ public:
         Trie* t=new Trie();
         sort(words.begin(),words.end(),comparator);
         for(int i=0;i<n;i++){
-            reverse(words[i].begin(),words[i].end());
+            //reverse(words[i].begin(),words[i].end());
             if(t->insert(words[i]))
                 ans+=words[i].size()+1;
         }
