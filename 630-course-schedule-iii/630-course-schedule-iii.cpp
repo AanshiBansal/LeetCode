@@ -12,12 +12,10 @@ public:
                 pq.push(courses[i][0]);
                 time+=courses[i][0];
             }else{
-                if(!pq.empty() && pq.top()>courses[i][0]){
-                    time-=pq.top();
-                    pq.pop();
-                    pq.push(courses[i][0]);
-                    time+=courses[i][0];
-                }
+                pq.push(courses[i][0]);
+                time+=courses[i][0];
+                time-=pq.top();
+                pq.pop();
             }
         }
         return pq.size();
