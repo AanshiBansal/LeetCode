@@ -14,7 +14,6 @@ public:
             int c=pq.top().second.second;
             pq.pop();
             count++;
-            cout<<val<<" "<<count<<endl;
             if(count==k)
                 return val;
             if(r+1<n){
