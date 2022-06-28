@@ -8,7 +8,7 @@ public:
         sort(count.begin(),count.end());
         int prev=count[25];
         int ans=0;
-        for(int i=24;i>=0 && count[i]!=0;i--){
+        for(int i=24;i>=0;i--){
             if(count[i]<prev){
                 prev=count[i];
             }else{
