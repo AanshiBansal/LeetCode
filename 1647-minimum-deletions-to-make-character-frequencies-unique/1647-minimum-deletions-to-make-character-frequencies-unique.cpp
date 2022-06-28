@@ -9,14 +9,10 @@ public:
         int prev=count[25];
         int ans=0;
         for(int i=24;i>=0 && count[i]!=0;i--){
-            if(prev==0){
-                ans+=count[i];
-                continue;
-            }
             if(count[i]<prev){
                 prev=count[i];
             }else{
-                prev=prev-1;
+                prev=max(prev-1,0);
                 ans+=count[i]-prev;
             }
         }
