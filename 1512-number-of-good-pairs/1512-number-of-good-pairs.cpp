@@ -13,7 +13,7 @@
 //     }
 // };
 
-class Solution {
+/*class Solution {
 private:
     void merge(vector<int>&nums, int start, int mid, int end){
         vector<int>temp;
@@ -73,5 +73,18 @@ private:
 public:
     int numIdenticalPairs(vector<int>& nums) {
         return mergeSort(nums,0,nums.size()-1);
+    }
+};
+*/
+
+class Solution {
+public:
+    int numIdenticalPairs(vector<int>& nums) {
+        vector<int>c(101,0);
+        int ans=0;
+        for(int i=0;i<nums.size();i++){
+            ans+=c[nums[i]]++;
+        }
+        return ans;
     }
 };
