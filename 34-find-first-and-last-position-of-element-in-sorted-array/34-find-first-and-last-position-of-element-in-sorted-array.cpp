@@ -1,3 +1,5 @@
+// Not a binary search solution
+// Time: O(n)
 // class Solution {
 // private: 
 //     void help(vector<int>&nums, int low,int high, int target, int &start, int &end){
