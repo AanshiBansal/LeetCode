@@ -27,20 +27,57 @@
 //     }
 // };
 
+// class Solution {
+// public:
+//     vector<int> searchRange(vector<int>& nums, int target) {
+//         int left=lower_bound(nums.begin(),nums.end(),target)-nums.begin();
+//         int right=upper_bound(nums.begin(),nums.end(),target)-nums.begin();
+//         if(left==right)
+//             return {-1,-1};
+//         return {left,right-1};
+//     }
+// };
+
+int lowerBound(vector<int>&a, int target){
+    int low=0;
+    int high=a.size();
+    while(low<high){
+        int mid=low+(high-low)/2;
+        if(a[mid]>=target){
+            high=mid;
+        }else{
+            low=mid+1;
+        }
+    }
+    if(low<0)
+        return a.size();
+    return low;
+}
+
+int upperBound(vector<int>&a, int target){
+    int low=0;
+    int high=a.size();
+    while(low<high){
+        int mid=low+(high-low)/2;
+        if(a[mid]>target){
+            high=mid;
+        }else{
+            low=mid+1;
+        }
+    }
+    if(low<0)
+        return a.size();
+    return low;
+}
+
 class Solution {
 public:
     vector<int> searchRange(vector<int>& nums, int target) {
-        int left=lower_bound(nums.begin(),nums.end(),target)-nums.begin();
-        int right=upper_bound(nums.begin(),nums.end(),target)-nums.begin();
+        int left=lowerBound(nums,target);
+        int right=upperBound(nums,target);
+        //cout<<left<<" "<<right<<endl;
         if(left==right)
             return {-1,-1};
         return {left,right-1};
     }
 };
-
-// class Solution {
-// public:
-//     vector<int> searchRange(vector<int>& nums, int target) {
-        
-//     }
-// };
