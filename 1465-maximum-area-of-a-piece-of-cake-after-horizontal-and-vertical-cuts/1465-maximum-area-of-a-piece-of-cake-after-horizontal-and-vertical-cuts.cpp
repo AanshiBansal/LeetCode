@@ -13,10 +13,10 @@ public:
         for(int i=1;i<verticalCuts.size();i++){
             maxiW=max(maxiW, verticalCuts[i]-verticalCuts[i-1]);
         }
-        long long ans=1;
-        ans*=maxiH;
-        ans*=maxiW;
-        ans%=1000000007;
-        return ans;
+        // long long ans=1;
+        // ans*=maxiH;
+        // ans*=maxiW;
+        // ans%=1000000007;
+        return long(maxiH)*maxiW%1000000007;
     }
 };
