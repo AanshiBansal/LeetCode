@@ -65,8 +65,6 @@ int upperBound(vector<int>&a, int target){
             low=mid+1;
         }
     }
-    if(low<0)
-        return a.size();
     return low;
 }
 
