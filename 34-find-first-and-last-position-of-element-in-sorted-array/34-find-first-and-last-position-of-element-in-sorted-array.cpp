@@ -49,8 +49,6 @@ int lowerBound(vector<int>&a, int target){
             low=mid+1;
         }
     }
-    if(low<0)
-        return a.size();
     return low;
 }
 
@@ -73,7 +71,6 @@ public:
     vector<int> searchRange(vector<int>& nums, int target) {
         int left=lowerBound(nums,target);
         int right=upperBound(nums,target);
-        //cout<<left<<" "<<right<<endl;
         if(left==right)
             return {-1,-1};
         return {left,right-1};
