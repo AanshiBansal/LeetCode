@@ -5,13 +5,10 @@ public:
         int high=nums.size()-1;
         while(low<high){
             int mid=(low+high)/2;
-            //cout<<low<<" "<<high<<" "<<mid<<endl;
-            // if(mid==nums.size()-1)
-            //     return mid;
-            if(nums[mid]<nums[mid+1]){
-                low=mid+1;
-            }else{
+            if(nums[mid]>nums[mid+1]){
                 high=mid;
+            }else{
+                low=mid+1;
             }
         }
         return low;
