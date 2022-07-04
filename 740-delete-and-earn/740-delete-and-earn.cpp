@@ -27,18 +27,39 @@
 //     }
 // };
 
+// class Solution {
+// public:
+//     int deleteAndEarn(vector<int>& nums) {
+//         vector<int>dp(10001,0);
+//         int maxi=0;
+//         for(int num:nums){
+//             dp[num]++;
+//             maxi=max(maxi,num);
+//         }
+//         for(int i=2;i<=maxi;i++){
+//             dp[i]=max(dp[i]*i+dp[i-2],dp[i-1]);
+//         }
+//         return dp[maxi];
+//     }
+// };
+
 class Solution {
 public:
     int deleteAndEarn(vector<int>& nums) {
-        vector<int>dp(10001,0);
-        int maxi=0;
+        map<int,int>mp;
         for(int num:nums){
-            dp[num]++;
-            maxi=max(maxi,num);
+            mp[num]++;
         }
-        for(int i=2;i<=maxi;i++){
-            dp[i]=max(dp[i]*i+dp[i-2],dp[i-1]);
+        int prevNum1,prev1,prev2,curr=0;
+        for(auto pairs:mp){
+            if(prevNum1==pairs.first-1)
+                curr=max(pairs.first*pairs.second+prev2,prev1);
+            else
+                curr=pairs.first*pairs.second+prev1;
+            prev2=prev1;
+            prev1=curr;
+            prevNum1=pairs.first;
         }
-        return dp[maxi];
+        return curr;
     }
 };
