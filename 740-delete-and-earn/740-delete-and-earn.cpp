@@ -31,12 +31,14 @@ class Solution {
 public:
     int deleteAndEarn(vector<int>& nums) {
         vector<int>dp(10001,0);
+        int maxi=0;
         for(int num:nums){
             dp[num]++;
+            maxi=max(maxi,num);
         }
-        for(int i=2;i<=10000;i++){
+        for(int i=2;i<=maxi;i++){
             dp[i]=max(dp[i]*i+dp[i-2],dp[i-1]);
         }
-        return dp[10000];
+        return dp[maxi];
     }
 };
