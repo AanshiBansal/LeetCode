@@ -15,11 +15,10 @@ public:
                     prev=position[i];
                 }
             }
-            if(balls>=m)
-                ans=max(ans,mid);
             if(balls<m){
                 high=mid-1;
             }else{
+                ans=max(ans,mid);
                 low=mid+1;
             }
         }
