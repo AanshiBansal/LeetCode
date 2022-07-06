@@ -14,6 +14,7 @@ public:
         int source=image[sr][sc];
         image[sr][sc]=color;
         while(!q.empty()){
+            cout<<q.size()<<endl;
             int r=q.front().first;
             int c=q.front().second;
             q.pop();
