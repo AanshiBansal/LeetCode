@@ -17,7 +17,7 @@ public:
                 index++;
             }
         }
-        if(last==-1 || last==passengers.size() || (count<capacity && passengers[last]!=buses[n-1]))
+        if(last==-1 || (count<capacity && passengers[last]!=buses[n-1]))
             return buses[n-1];
         
         while(last-1>=0 && passengers[last]-1==passengers[last-1]){
