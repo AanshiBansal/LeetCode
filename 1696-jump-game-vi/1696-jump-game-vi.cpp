@@ -20,23 +20,24 @@
 //     }
 // };
 
+// decreasing monoqueue
 class Solution {
 public:
     int maxResult(vector<int>& nums, int k) {
         int n=nums.size();
         if(n==1)
             return nums[0];
-        deque<int>q;
-        q.push_back(0);
+        deque<pair<int,int>>q;
+        q.push_back({0,nums[0]});
         for(int i=1;i<n;i++){
-            if(q.front()==i-k-1)
+            if(q.front().first==i-k-1)
                 q.pop_front();
-            nums[i]+=nums[q.front()];
-            while(!q.empty() && nums[q.back()]<nums[i]){
+            int curr = nums[i]+q.front().second;
+            while(!q.empty() && q.back().second<curr){
                 q.pop_back();
             }
-            q.push_back(i);
+            q.push_back({i,curr});
         }
-        return nums[n-1];
+        return q.back().second;
     }
 };
