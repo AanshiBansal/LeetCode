@@ -9,6 +9,8 @@ private:
             return true;
         }
         for(int i=0;i<4;i++){
+            if(i>0 && sides[i]==sides[i-1])
+                continue;
             sides[i]+=matchsticks[index];
             if(sides[i]<=length && rec(matchsticks,index+1,sides,length))
                 return true;
