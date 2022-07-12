@@ -24,6 +24,9 @@ public:
             sum+=s;
         if(sum%4 !=0)
             return false;
+        for(int s:matchsticks)
+            if(s>sum/4)
+                return false;
         sort(matchsticks.begin(),matchsticks.end(),greater());
         return rec(matchsticks,0,sides,sum/4);
     }
