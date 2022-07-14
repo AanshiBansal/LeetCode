@@ -11,22 +11,21 @@
  */
 class Solution {
 private:
-    TreeNode* fn(vector<int>& preorder,int a, int b, vector<int>& inorder, int x, int y){
-        //cout<<a<<" "<<b<<" "<<x<<" "<<y<<endl;
+    unordered_map<int,int>mp;
+    TreeNode* fn(vector<int>& preorder,int a, int b, int x, int y){
         if(x>y)
             return NULL;
         TreeNode* node= new TreeNode(preorder[a]);
-        int index=x;
-        while(inorder[index]!=preorder[a]){
-            index++;
-        }
+        int index=mp[preorder[a]];
         int leftsize=index-a;
-        node->left=fn(preorder,a+1,a+index-x,inorder,x,index-1);
-        node->right=fn(preorder,a+index-x+1,b,inorder,index+1,y);
+        node->left=fn(preorder,a+1,a+index-x,x,index-1);
+        node->right=fn(preorder,a+index-x+1,b,index+1,y);
         return node;
     }
 public:
     TreeNode* buildTree(vector<int>& preorder, vector<int>& inorder) {
-        return fn(preorder,0,preorder.size()-1,inorder,0,inorder.size()-1);
+        for(int i=0;i<inorder.size();i++)
+            mp[inorder[i]]=i;
+        return fn(preorder,0,preorder.size()-1,0,inorder.size()-1);
     }
 };
