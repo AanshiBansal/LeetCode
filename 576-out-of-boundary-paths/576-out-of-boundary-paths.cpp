@@ -1,3 +1,4 @@
+typedef long long ll;
 class Solution {
 public:
     int findPaths(int m, int n, int maxMove, int startRow, int startColumn) {
@@ -7,14 +8,15 @@ public:
         int dr[]={0,-1,0,1};
         queue<pair<int,int>>q;
         q.push({startRow,startColumn});
-        vector<vector<long long>>total(m,vector<long long>(n,0));
+        vector<vector<ll>>total(m,vector<ll>(n,0));
         total[startRow][startColumn]=1;
-        vector<vector<long long>>prev(m,vector<long long>(n,0));
+        vector<vector<ll>>prev(m,vector<ll>(n,0));
         prev[startRow][startColumn]=1;
         int moves=1;
+        int mod=1000000007;
         while(moves<maxMove){
             int size=q.size();
-            vector<vector<long long>>curr(m,vector<long long>(n,0));
+            vector<vector<ll>>curr(m,vector<ll>(n,0));
             for(int i=0;i<size;i++){
                 int r=q.front().first;
                 int c=q.front().second;
@@ -25,7 +27,7 @@ public:
                             q.push({r+dr[j],c+dc[j]});
                         }
                         curr[r+dr[j]][c+dc[j]]+=prev[r][c];
-                        curr[r+dr[j]][c+dc[j]]%=1000000007;
+                        curr[r+dr[j]][c+dc[j]]%=mod;
                     }
                 }
             }
@@ -34,22 +36,22 @@ public:
             for(int i=0;i<m;i++){
                 for(int j=0;j<n;j++){
                     total[i][j]+=prev[i][j];
-                    total[i][j]%=1000000007;
+                    total[i][j]%=mod;
                 }
             }
         }
         long long ans=0;
         for(int j=0;j<n;j++){
             ans+=total[0][j];
-            ans%=1000000007;
+            ans%=mod;
             ans+=total[m-1][j];
-            ans%=1000000007;
+            ans%=mod;
         }
         for(int i=0;i<m;i++){
             ans+=total[i][0];
-            ans%=1000000007;
+            ans%=mod;
             ans+=total[i][n-1];
-            ans%=1000000007;
+            ans%=mod;
         }
         return ans;
     }
