@@ -5,9 +5,6 @@ public:
         for(int i=0;i<nums.size();i++){
             int count=1;
             if(i>0 && nums[i]!=nums[i-1]+1){
-                if(!prev.empty() && prev.top()<3){
-                    return false;
-                }
                 prev=priority_queue<int,vector<int>,greater<int>>();
             }
             while(i+1<nums.size() && nums[i]==nums[i+1]){
@@ -28,9 +25,8 @@ public:
                 count--;
             }
             prev=curr;
-        }
-        if(!prev.empty() && prev.top()<3){
-            return false;
+            if((i+1==nums.size() || nums[i+1]!=nums[i]+1) && prev.top()<3)
+                return false;
         }
         return true;
     }
