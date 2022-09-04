@@ -7,7 +7,7 @@ public:
           int dig = num % 10;
           if (dig + K <= 9)
               dfs(num * 10 + dig + K, n - 1, K, res);
-          if (K != 0 && dig >= K)
+          if (K!=0 && dig -K >= 0)
               dfs(num * 10 + dig - K, n - 1, K, res);
         }
     }
