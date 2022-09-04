@@ -1,20 +1,21 @@
 class Solution {
-public:
-    void dfs(int num, int n, int K, vector<int> &res) {
-      if (n == 0) 
+private:
+    vector<int> res;
+    void dfs(int num, int n, int k) {
+      if (n == 0)
           res.push_back(num);
       else {
           int dig = num % 10;
-          if (dig + K <= 9)
-              dfs(num * 10 + dig + K, n - 1, K, res);
-          if (K!=0 && dig -K >= 0)
-              dfs(num * 10 + dig - K, n - 1, K, res);
+          if (dig + k <= 9)
+              dfs(num * 10 + dig + k, n - 1, k);
+          if (k!=0 && dig >= k)
+              dfs(num * 10 + dig - k, n - 1, k);
         }
     }
-    vector<int> numsSameConsecDiff(int N, int K) {
-        vector<int> res;
-        for (auto num = 1; num <= 9; ++num) 
-            dfs(num, N - 1, K, res);
+public:
+    vector<int> numsSameConsecDiff(int n, int k) {
+        for (int num = 1; num <= 9; num++) 
+            dfs(num, n - 1, k);
         return res;
     }
 };
