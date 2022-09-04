@@ -18,7 +18,6 @@ public:
         while(!q.empty()){
             int r=q.front().second.first;
             int c=q.front().second.second;
-            //cout<<r<<" "<<c<<endl;
             TreeNode* node=q.front().first;
             q.pop();
             mp[{r,c}].push_back(node->val);
@@ -33,11 +32,8 @@ public:
             sort(itr->second.begin(),itr->second.end());
         }
         map<int,vector<int>>mp2;
-        //vector<vector<int>>ans(r_max+1,vector<int>());
-        //cout<<"here"<<endl;
         for(auto itr=mp.begin();itr!=mp.end();itr++){
             int c=itr->first.second;
-            //cout<<c<<endl;
             if(mp2[c].size()==0)
                 mp2[c]=itr->second;
             else
