@@ -12,6 +12,9 @@
 class Solution {
 public:
     vector<vector<int>> verticalTraversal(TreeNode* root) {
+        // Usage of multiset
+        // multi is used because there can be multiple entries with same value on the same row
+        // multimap cannot be used in place of multiset because multimap does not store values in sorted fashion instead stores in the order they are inserted
         map<int,multiset<pair<int,int>>>mp;
         queue<pair<TreeNode*, pair<int,int>>>q;
         q.push({root,{0,0}});
