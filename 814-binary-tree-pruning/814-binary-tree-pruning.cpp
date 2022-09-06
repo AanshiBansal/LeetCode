@@ -11,17 +11,17 @@
  */
 class Solution {
 public:
-    TreeNode* pruneTree(TreeNode* root) {
+    TreeNode* pruneTree(TreeNode* &root) {
         if(root==NULL)
             return root;
         TreeNode* left=pruneTree(root->left);
         TreeNode* right=pruneTree(root->right);
-        if(left==NULL)
-            root->left=NULL;
-        if(right==NULL)
-            root->right=NULL;
+        // if(left==NULL)
+        //     root->left=NULL;
+        // if(right==NULL)
+        //     root->right=NULL;
         if(left==NULL && right==NULL && root->val!=1)
-            return NULL;
+            root= NULL;
         return root;
     }
 };
