@@ -4,23 +4,17 @@ public:
         int n=palindrome.size();
         if(n==1)
             return "";
-        bool flag=true;
+        int flag=n/2;
         for(int i=0;i<n/2;i++){
             if(palindrome[i]!='a'){
-                flag=false;
+                flag=i;
                 break;
             }
         }
-        if(flag){
+        if(flag==n/2)
             palindrome[n-1]='b';
-            return palindrome;
-        }
-        for(int i=0;i<n/2;i++){
-            if(palindrome[i]!='a'){
-                palindrome[i]='a';
-                break;
-            }
-        }
+        else
+            palindrome[flag]='a';
         return palindrome;
     }
 };
