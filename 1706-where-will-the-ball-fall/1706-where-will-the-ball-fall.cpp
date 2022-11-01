@@ -21,18 +21,11 @@ public:
                 int col=q.front().first;
                 int ball=q.front().second;
                 q.pop();
-                if(grid[row][col]==1){
-                    if(grid[row+1][col]==1 && col+1!=n && grid[row+1][col+1]==1)
-                        q.push({col+1,ball});
-                    if(grid[row+1][col]==-1 && col-1!=-1 && grid[row+1][col-1]==-1)
-                        q.push({col-1,ball});
-                }
-                if(grid[row][col]==-1){
-                    if(grid[row+1][col]==-1 && col-1!=-1 && grid[row+1][col-1]==-1)
-                        q.push({col-1,ball});
-                    if(grid[row+1][col]==1 && col+1!=n && grid[row+1][col+1]==1)
-                        q.push({col+1,ball});
-                }
+                if(grid[row+1][col]==1 && col+1!=n && grid[row+1][col+1]==1)
+                    q.push({col+1,ball});
+                if(grid[row+1][col]==-1 && col-1!=-1 && grid[row+1][col-1]==-1)
+                    q.push({col-1,ball});
+                
             }
             row++;
         }
