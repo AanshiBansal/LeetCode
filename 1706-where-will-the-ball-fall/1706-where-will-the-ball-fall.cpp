@@ -7,8 +7,7 @@ public:
         vector<int>ans(n);
         for(int j=0;j<n;j++)
             ans[j]=j;
-        int row=-1;
-        while(row+1<m){
+        for(int row=-1;row<m-1;row++){
             for(int ball=0;ball<n;ball++){
                 if(ans[ball]==-1)
                     continue;
@@ -20,7 +19,6 @@ public:
                 else
                     ans[ball]=-1;
             }
-            row++;
         }
         return ans;
     }
