@@ -39,10 +39,11 @@ private:
             root->word="";
         }
         board[i][j]='#';
-        dfs(i+1,j,root);
-        dfs(i-1,j,root);
-        dfs(i,j+1,root);
-        dfs(i,j-1,root);
+        int di[]={1,-1,0,0};
+        int dj[]={0,0,1,-1};
+        for(int m=0;m<4;m++){
+            dfs(i+di[m],j+dj[m],root);
+        }
         board[i][j]=c;
     }
 public:
