@@ -30,7 +30,7 @@ private:
     vector<string>ans;
     int m,n;
     void dfs(int i,int j,TrieNode* root){
-        if(i<0 || i==m || j<0 || j==n || board[i][j]== '#' || root->children[board[i][j]-'a'] == NULL)
+        if(board[i][j]== '#' || root->children[board[i][j]-'a'] == NULL)
             return;
         char c=board[i][j];
         root = root->children[c-'a'];
@@ -39,11 +39,15 @@ private:
             root->word="";
         }
         board[i][j]='#';
-        int di[]={1,-1,0,0};
-        int dj[]={0,0,1,-1};
-        for(int m=0;m<4;m++){
-            dfs(i+di[m],j+dj[m],root);
-        }
+        // int di[]={1,-1,0,0};
+        // int dj[]={0,0,1,-1};
+        // for(int m=0;m<4;m++){
+        //     dfs(i+di[m],j+dj[m],root);
+        // }
+        if(i+1<m)dfs(i+1,j,root);
+        if(i-1>=0)dfs(i-1,j,root);
+        if(j+1<n)dfs(i,j+1,root);
+        if(j-1>=0)dfs(i,j-1,root);
         board[i][j]=c;
     }
 public:
