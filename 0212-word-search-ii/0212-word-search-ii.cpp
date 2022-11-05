@@ -26,11 +26,11 @@ public:
 class Solution {
 private:
     Trie* trie;
-    //vector<vector<char>> board;
+    vector<vector<char>> board;
     vector<string>ans;
     int m,n;
-    void dfs(int i,int j,TrieNode* root,vector<vector<char>>& board){
-        if(board[i][j]== '#' || root->children[board[i][j]-'a'] == NULL)
+    void dfs(int i,int j,TrieNode* root){
+        if(i<0 || i==m || j<0 || j==n || board[i][j]== '#' || root->children[board[i][j]-'a'] == NULL)
             return;
         char c=board[i][j];
         root = root->children[c-'a'];
@@ -39,28 +39,23 @@ private:
             root->word="";
         }
         board[i][j]='#';
-        // int di[]={1,-1,0,0};
-        // int dj[]={0,0,1,-1};
-        // for(int m=0;m<4;m++){
-        //     dfs(i+di[m],j+dj[m],root);
-        // }
-        if(i+1<m)dfs(i+1,j,root,board);
-        if(i-1>=0)dfs(i-1,j,root,board);
-        if(j+1<n)dfs(i,j+1,root,board);
-        if(j-1>=0)dfs(i,j-1,root,board);
+        dfs(i+1,j,root);
+        dfs(i-1,j,root);
+        dfs(i,j+1,root);
+        dfs(i,j-1,root);
         board[i][j]=c;
     }
 public:
     vector<string> findWords(vector<vector<char>>& board, vector<string>& words) {
         trie= new Trie();
-        //this->board=board;
+        this->board=board;
         for(string w:words)
             trie->addWord(w);
         m=board.size();
         n=board[0].size();
         for(int i=0;i<m;i++){
             for(int j=0;j<n;j++){
-                dfs(i,j,trie->root,board);
+                dfs(i,j,trie->root);
             }
         }
         return ans;
