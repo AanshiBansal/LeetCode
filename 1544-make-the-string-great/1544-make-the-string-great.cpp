@@ -1,12 +1,14 @@
 class Solution {
 public:
-    bool capital(char c){
-        return c>='A' && c<='Z';
+    char opposite(char c){
+        if(c>='A' && c<='Z')
+            return c-'A'+'a';
+        return c-'a'+'A';
     }
     string makeGood(string s) {
         deque<char>dq;
         for(char c:s){
-            if(!dq.empty() && ((capital(c) && dq.back()==c-'A'+'a') || !(capital(c)) && dq.back()==c+'A'-'a'))
+            if(!dq.empty() && dq.back()==opposite(c))
                 dq.pop_back();
             else
                 dq.push_back(c);
